@@ -1,4 +1,4 @@
-package com.spring.fundamentals.employeemanagementsystem.TightCoupling;
+package TightCoupling;
 
 public class RecommenderImplementation {
     public String[] recommandMovie(String movie){

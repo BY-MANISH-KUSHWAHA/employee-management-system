@@ -1,10 +1,13 @@
-package com.spring.fundamentals.employeemanagementsystem.LossCoupling;
+package com.spring.fundamentals.employeemanagementsystem.SpringBasedDependencyInjection;
+
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ContentFiltering implements MovieFilters {
+@Component
+public class SpringContentFiltering implements SpringMovieFilters {
     public static String[] getSpecialRecommandations(String movie){
         return new String[]{"Avengers","Mrs. Marvel","Hulk","Back to the future","Final Destination","Iron Man","Love and Thunder","Spiderman",
                 "Amazing Spiderman","Batman","Fast 5"};
@@ -14,10 +17,10 @@ public class ContentFiltering implements MovieFilters {
     public List<String> getRecommandations() {
         List<String> arr = new ArrayList<>();
         for (String movie:
-             ContentFiltering.getSpecialRecommandations(" ")) {
+             SpringContentFiltering.getSpecialRecommandations(" ")) {
             arr.add(movie);
         }
-        arr = arr.stream().filter(s -> s.length()<10).collect(Collectors.toList());
+        arr = arr.stream().filter(s -> s.length()<8).collect(Collectors.toList());
         return arr;
     }
 }

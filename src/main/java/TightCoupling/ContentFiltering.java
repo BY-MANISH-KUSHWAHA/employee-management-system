@@ -1,4 +1,4 @@
-package com.spring.fundamentals.employeemanagementsystem.TightCoupling;
+package TightCoupling;
 
 public class ContentFiltering {
     public String[] getRecommandations(String movie){

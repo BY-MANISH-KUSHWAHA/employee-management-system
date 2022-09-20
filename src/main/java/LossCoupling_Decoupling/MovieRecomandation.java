@@ -1,4 +1,4 @@
-package com.spring.fundamentals.employeemanagementsystem.LossCoupling;
+package LossCoupling_Decoupling;
 
 
 import java.util.List;

@@ -1,10 +1,12 @@
 package com.spring.fundamentals.employeemanagementsystem;
 
-import com.spring.fundamentals.employeemanagementsystem.LossCoupling.ContentFiltering;
-import com.spring.fundamentals.employeemanagementsystem.LossCoupling.MovieRecomandation;
-import com.spring.fundamentals.employeemanagementsystem.TightCoupling.RecommenderImplementation;
+import LossCoupling_Decoupling.ContentFiltering;
+import LossCoupling_Decoupling.MovieRecomandation;
+import TightCoupling.RecommenderImplementation;
+import com.spring.fundamentals.employeemanagementsystem.SpringBasedDependencyInjection.SpringMovieRecomandation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +27,18 @@ public class EmployeeManagementSystemApplication {
 		List<String> filteredResult = movieRecomandation.recommandMovie("");
 		System.out.println(filteredResult);
 
-		SpringApplication.run(EmployeeManagementSystemApplication.class, args);
+		System.out.println("---------- Spring Based Automanaging Dependencies -------------------------");
+		ApplicationContext appContextObj = SpringApplication.run(EmployeeManagementSystemApplication.class,args);
+
+		// Using the appContext
+		// ==> Automating selected Filter class based on Component and Autowire @ will help to map
+		SpringMovieRecomandation movieRecomandationSpring = appContextObj.getBean(SpringMovieRecomandation.class);
+		List<String> finalResult = movieRecomandationSpring.recommandMovie("");
+		System.out.println("SpringBasedDependencyInjection:"+finalResult);
+
+
+
+		//SpringApplication.run(EmployeeManagementSystemApplication.class, args);
 	}
 
 }
